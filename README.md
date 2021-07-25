@@ -26,4 +26,3 @@ quasar build
 See [Configuring quasar.conf.js](https://v2.quasar.dev/quasar-cli/quasar-conf-js).
 
 
-git subtree push --prefix dist/spa origin master
