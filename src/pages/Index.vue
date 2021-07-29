@@ -1,49 +1,63 @@
 <template>
-  <q-page class="row items-center justify-evenly">
-    <example-component
-      title="Example component"
-      active
-      :todos="todos"
-      :meta="meta"
-    ></example-component>
+  <q-page>
+    <div class="row">
+      <div class="col-xs-1 col-sm-1 col-md-2"></div>
+      <div class="cols-xs-10 col-sm-10 col-md-10">
+        <div id="name-container" class="column justify-center">
+          <text-stroke text="DIEGO" :canvasWidth="450" />
+          <text-fill text="SOLER" :canvasWidth="450" />
+          <div id="subtitle">Desarrollador freelance</div>
+        </div>
+      </div>
+    </div>
+    
   </q-page>
 </template>
 
 <script lang="ts">
-import { Todo, Meta } from 'components/models';
-import ExampleComponent from 'components/CompositionComponent.vue';
-import { defineComponent, ref } from 'vue';
+import { defineComponent} from 'vue';
+
+import TextStroke from '../components/text_stroke.vue';
+import TextFill from '../components/text_fill.vue';
 
 export default defineComponent({
   name: 'PageIndex',
-  components: { ExampleComponent },
+  components: {
+    'text-stroke': TextStroke,
+    'text-fill': TextFill
+  },
   setup() {
-    const todos = ref<Todo[]>([
-      {
-        id: 1,
-        content: 'ct1'
-      },
-      {
-        id: 2,
-        content: 'ct2'
-      },
-      {
-        id: 3,
-        content: 'ct3'
-      },
-      {
-        id: 4,
-        content: 'ct4'
-      },
-      {
-        id: 5,
-        content: 'ct5'
-      }
-    ]);
-    const meta = ref<Meta>({
-      totalCount: 1200
-    });
-    return { todos, meta };
+    return {};
   }
 });
 </script>
+
+<style lang="scss">
+#name-container {
+  height: calc(100vh - 50px);
+}
+#developer-name {
+  color: #fff;
+  font-family: 'Montserrat';
+  font-size: 120px;
+  font-weight: 900;
+  text-transform: uppercase;
+  text-align: left;
+  letter-spacing: 0.5ex;
+}
+#developer-lastname {
+  color: #fff;
+  font-family: 'Montserrat';
+  font-size: 120px;
+  font-weight: 900;
+  text-transform: uppercase;
+  text-align: left;
+  letter-spacing: 0.5ex;
+}
+
+#subtitle {
+  color: #f0f0f0;
+  font-family: 'Montserrat';
+  text-align: left;
+}
+</style>
